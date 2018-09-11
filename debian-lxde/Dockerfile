@@ -1,4 +1,6 @@
-FROM bshibley/debian-xorg:buster 
+FROM bclouser/debian-xorg:buster
+
+RUN [ "cross-build-start" ]
 
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
     lxde-core \
@@ -8,3 +10,5 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
     leafpad \
     epiphany-browser \
     && apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+
+RUN [ "cross-build-end" ]
